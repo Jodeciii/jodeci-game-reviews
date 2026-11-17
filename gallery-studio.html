@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#0c0d10">
+  <title>Gallery Studio — JODECI</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="galleries.js"></script><script defer src="media-store.js"></script><script defer src="gallery-studio.js"></script>
+</head>
+<body>
+  <header class="site-header"><div class="container header-inner"><a href="index.html#galleries" class="brand"><span class="brand-mark">J</span><span class="brand-name">JODECI<span class="brand-subtitle">GALLERY STUDIO</span></span></a><div class="gallery-studio-header-links"><a class="btn btn-outline" href="studio.html">REVIEW STUDIO</a><a class="btn btn-outline" href="index.html#galleries">← VIEW GALLERIES</a></div></div></header>
+  <main class="container gallery-studio-main">
+    <div class="studio-banner"><span class="eyebrow">A HOME FOR THE SHOTS WORTH KEEPING</span><h1>GALLERY STUDIO.</h1><p>One album per game. Upload your favorite screenshots in batches, arrange them, and give them room to breathe. Albums are independent of reviews.</p></div>
+    <div class="studio-note"><strong>Private until exported:</strong> Changes here stay in this browser. Download the Gallery Update ZIP to publish them on GitHub. It contains <strong>galleries.js</strong> and newly uploaded media files. Existing reviews and their media remain untouched. Keep exports as backups.</div>
+    <div class="studio-layout gallery-studio-layout">
+      <aside class="studio-sidebar"><h2>YOUR ALBUMS</h2><div id="album-list" class="studio-list"></div><button class="btn btn-outline" id="album-new" type="button">+ NEW ALBUM</button><button class="btn btn-primary" id="album-export" type="button">↓ DOWNLOAD GALLERY UPDATE ZIP</button><p class="form-hint" style="margin-top:13px">Extract the exported ZIP into your site's repository, preserving <strong>assets/uploads/</strong>. This is separate from your review exports.</p><div id="album-export-status" class="gallery-editor-status" role="status" aria-live="polite"></div></aside>
+      <section class="studio-main gallery-editor-main"><div class="album-editor-header"><div><span class="section-kicker">PHOTO COLLECTION</span><h2 id="album-editor-heading">NEW ALBUM</h2></div><span id="album-dirty" class="studio-unsaved" hidden>UNSAVED CHANGES</span></div>
+        <form id="album-form" novalidate>
+          <div class="studio-form-grid"><div class="form-field"><label for="album-title">GAME TITLE *</label><input id="album-title" placeholder="Phantom Blade Zero" required maxlength="120"></div>
+          <div class="form-field"><label for="album-year">RELEASE YEAR (OPTIONAL)</label><input id="album-year" type="number" min="1970" max="2100" placeholder="2026"></div>
+          <div class="form-field full"><label for="album-description">SHORT DESCRIPTION (OPTIONAL)</label><textarea id="album-description" rows="2" placeholder="A collection of the game's most beautiful moments..." maxlength="600"></textarea></div></div>
+          <div class="album-upload-zone"><div class="album-upload-icon" aria-hidden="true">＋</div><div><h3>ADD SCREENSHOTS</h3><p>Drop images here, or choose 30–40 at once. PNG, JPEG, WebP, AVIF and animated GIFs are supported.</p></div><label class="btn btn-primary album-file-choose" for="album-files">+ CHOOSE IMAGES <input id="album-files" type="file" accept="image/png,image/jpeg,image/webp,image/avif,image/gif" multiple hidden></label></div>
+          <div class="album-url-form"><label for="album-urls">OR ADD IMAGE URLS / EXISTING ASSET PATHS (ONE PER LINE)</label><textarea id="album-urls" rows="2" placeholder="https://example.com/image.jpg&#10;assets/uploads/existing-screenshot.png"></textarea><button type="button" id="album-add-urls" class="btn btn-outline">+ ADD LINKS</button></div>
+          <div class="album-editor-toolbar"><div><h3>SCREENSHOTS <span id="album-photo-count">0</span></h3><p class="form-hint">Drag to reorder, or use the arrows. Choose a cover image. Click an image to preview it.</p></div><button type="button" class="btn btn-outline" id="album-clear">CLEAR IMAGES</button></div>
+          <div class="album-editor-grid" id="album-items"></div>
+          <div class="studio-actions"><button class="btn btn-primary" type="submit">SAVE ALBUM IN BROWSER</button><button class="btn btn-danger" id="album-delete" type="button">DELETE ALBUM</button></div><p id="album-status" class="gallery-editor-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </div>
+  </main>
+  <dialog id="album-preview" class="album-preview-dialog" aria-label="Screenshot preview"><button type="button" class="album-preview-close" aria-label="Close preview">×</button><img alt="Screenshot preview"><p></p></dialog>
+  <footer class="site-footer"><div class="container"><a class="text-link" href="index.html#galleries">← BACK TO GALLERIES</a></div></footer>
+</body>
+</html>
